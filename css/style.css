@@ -93,18 +93,21 @@ solid 2px border using #45ADAD,
 }
 
 /* Step 12: Edit the css for the pricing and card classes to match our example. Part of achieving this is by using a flex-property to specify a “size” of 275px. Notice that the elements do not have the same height, but do have the same width.*/
-.pricing, .card{
-    flex-basis: 275px;
+@media screen and (min-width: 900px){
+    .pricing, .card{
+        flex-basis: 275px;
+    }
 }
 
 /* Step 13: Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. Make sure that it is always visible. You can see an example of this in the video and in the screenshot at 1200px when scrolled. This is a challenge problem. You should not give or receive help when completing it */
-header:first-of-type{
-    position: sticky;
-    top: 0; /*From W3Schools, position sticky and top: 0 makes the header stay on top even with scrolling */
-    width: 100%;
-    z-index: 1000;
+@media screen and (min-width: 900px){
+    body > header:not(main header){
+        position: sticky;
+        top: 0; /*From W3Schools, position sticky and top: 0 makes the header stay on top even with scrolling */
+        width: 100%;
+        z-index: 10;
+    }
 }
-
 
 /* Step 14: The logo should appear but not be animated if prefers-reduced-motion is selected in the accessibility preferences.  */
 @media (prefers-reduced-motion){
@@ -114,7 +117,6 @@ header:first-of-type{
 }
 
 @media print {
-    
     /* Step 15: Change the font on your body to Arial with a backup value of  Helvetica*/
     /* Step 16: The background image should be removed. */
     body{
@@ -150,10 +152,9 @@ header:first-of-type{
     #gallery, .gallery{
         display: none;
     }
-
+    
     /* Step 21: Without using list-style-type add the thumbs up entity as shown in the cards. This is a challenge problem. You should not give or receive help when completing it.**For some people the thumbs up is not printing as yellow. That is fine.*/
     .card ul > li:nth-of-type(2)::after{ /*always chooses the second child no matter the type*/
         content: "👍";
-        
     }
 }
